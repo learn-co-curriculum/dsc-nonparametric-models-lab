@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this cumulative lab, you will apply the new nonparametric models you have just learned — k-nearest neighbors and decision trees — to the forest cover dataset.
+In this cumulative lab, you will apply two nonparametric models you have just learned — k-nearest neighbors and decision trees — to the forest cover dataset.
 
 ## Objectives
 
@@ -11,7 +11,7 @@ In this cumulative lab, you will apply the new nonparametric models you have jus
 * Explore multiple model algorithms, and tune their hyperparameters
 * Practice choosing a final model across multiple model algorithms and evaluating its performance
 
-## Your Task: Complete and End-to-End ML Process with Nonparametric Models on the Forest Cover Dataset
+## Your Task: Complete an End-to-End ML Process with Nonparametric Models on the Forest Cover Dataset
 
 ![line of pine trees](images/trees.jpg)
 
@@ -86,11 +86,11 @@ This algorithm — unlike linear models or tree-based models — does not emphas
 * **Training speed:** Fast. In theory it's just saving the training data for later, although the scikit-learn implementation has some additional logic "under the hood" to make prediction faster.
 * **Prediction speed:** Very slow. The model has to look at every record in the training set to find the k closest to the new record.
 * **Requires scaling:** Yes. The algorithm to find the nearest records is distance-based, so it matters that distances are all on the same scale.
-* **Key hyperparameters:** `n_neighbors` (how many nearest neighbors to find; too few neighbors leads to overfitting, too many leads to underfitting), `p` and `metric` (what kind of distance to use in finding nearest neighbors)
+* **Key hyperparameters:** `n_neighbors` (how many nearest neighbors to find; too few neighbors leads to overfitting, too many leads to underfitting), `p` and `metric` (what kind of distance to use in defining "nearest" neighbors)
 
 #### Decision Trees - [documentation here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
 
-This algorithm does emphasize learning the relationship between the features and the target, although it is looking for ways to split the data to decrease the entropy of the target rather than finding linear relationships between the features and the target like a linear model does.
+Similar to linear models (and unlike kNN), this algorithm emphasizes learning the relationship between the features and the target. However, unlike a linear model that tries to find linear relationships between each of the features and the target, decision trees look for ways to split the data based on features to decrease the entropy of the target in each split.
 
 * **Training speed:** Slow. The model is considering splits based on as many as all of the available features, and it can split on the same feature multiple times. This requires exponential computational time that increases based on the number of columns as well as the number of rows.
 * **Prediction speed:** Medium fast. Producing a prediction with a decision tree means applying several conditional statements, which is slower than something like logistic regression but faster than kNN.
@@ -154,7 +154,11 @@ assert round(X_test_scaled[0][0], 3) == -1.370
 
 ## 2. Build a Baseline kNN Model
 
-Build a scikit-learn kNN model with default hyperparameters. Then use `cross_val_score` with `scoring="neg_log_loss` to find the mean log loss for this model (passing in `X_train_scaled` and `y_train` to `cross_val_score`). Call the resulting score `knn_baseline_log_loss`.
+Build a scikit-learn kNN model with default hyperparameters. Then use `cross_val_score` with `scoring="neg_log_loss"` to find the mean log loss for this model (passing in `X_train_scaled` and `y_train` to `cross_val_score`). You'll need to find the mean of the cross-validated scores, and negate the value (either put a `-` at the beginning or multiply by `-1`) so that your answer is a log loss rather than a negative log loss.
+
+Call the resulting score `knn_baseline_log_loss`.
+
+Your code might take a minute or more to run.
 
 
 ```python
