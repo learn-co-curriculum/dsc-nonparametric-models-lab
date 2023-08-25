@@ -13,7 +13,7 @@ In this cumulative lab, you will apply two nonparametric models you have just le
 
 ## Your Task: Complete an End-to-End ML Process with Nonparametric Models on the Forest Cover Dataset
 
-![line of pine trees](images/trees.jpg)
+![line of pine trees](https://curriculum-content.s3.amazonaws.com/data-science/images/trees.jpg)
 
 Photo by <a href="https://unsplash.com/@michaelbenz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Michael Benz</a> on <a href="/s/photos/forest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
